@@ -1,0 +1,25 @@
+@mixin animate($animation, $duration, $method, $times) {
+    animation: $animation $duration $method $times;
+}
+
+@mixin keyframes($name) {
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+.loadingIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    padding: 0px;
+    font-size: 1.4em;
+
+    @include keyframes(rotate) {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    @include animate(rotate, 2s, linear, infinite);
+}

@@ -1,0 +1,88 @@
+@import "../../config/variables";
+
+#outBase {
+    background-color: $lavander;
+    background-image: linear-gradient(0deg, $lavander, $skyBlue, $cyan);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .outBaseFrame {
+        min-width: 50%;
+        padding: 2em;
+        background-color: $lightGray;
+        box-shadow: 0px 0px 3px 3px $lightGray;
+        border-radius: 1em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6em;
+
+        .outBaseLogoHolder {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 10em;
+
+            &::after {
+                position: absolute;
+                content: "";
+                top: -4px;
+                left: -4px;
+                right: -4px;
+                bottom: -4px;
+                border-radius: 1000px;
+                box-shadow: inset 0px 0px 4px 10px $lightGray;
+            }
+
+            .outBaseLogo {
+                height: 100%;
+                border-radius: 1000px;
+                aspect-ratio: 1;
+            }
+        }
+
+        .outBaseTitle {
+            margin: 0;
+            padding: 0;
+            font-size: 3em;
+        }
+
+        > *:last-child {
+            margin-top: 2em;
+        }
+    }
+}
+
+#ListQuestionType {
+    display: flex;
+    flex-direction: row;
+    gap: 0.4em;
+    align-items: stretch;
+    justify-content: center;
+    height: 2.3em;
+
+    #TypeCircle {
+        aspect-ratio: 1;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 1000px;
+        color: $lightGray;
+        font-weight: bold;
+        font-size: 1em;
+        border: 2px solid rgba(#000, 0.2);
+
+        img {
+            max-height: 80%;
+            max-width: 80%;
+            opacity: 0.5;
+            object-fit: contain;
+        }
+    }
+}

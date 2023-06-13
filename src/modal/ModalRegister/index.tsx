@@ -178,4 +178,3 @@ function ModalRegister() {
 }
 
 export default ModalRegister;
-//

@@ -10,86 +10,10 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Button from "react-bootstrap/Button";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { GiPadlock } from "react-icons/gi";
-import { HiOutlineAtSymbol, HiOutlineHashtag } from "react-icons/hi";
+import { HiOutlineHashtag } from "react-icons/hi";
 import LoadingIcon from "../../components/LoadingIcon";
-import { Modal } from "react-bootstrap";
-
-function ModalForgotPassword() {
-    const [email, setEmail] = useState<string>("");
-    const [showModal, setShowModal] = useState<boolean>(false);
-    const [loading, setLoading] = useState<boolean>(false);
-
-    const handleCloseModal = () => setShowModal(false);
-
-    const handleShowModal = () => setShowModal(true);
-
-    const handleForgotPass = async () => {
-        if (!email) return toast.error(ERROR_LOGIN_REQUIRED);
-
-        setLoading(true);
-
-        Api.ResetPassword(email)
-            .then((mensagem) => {
-                handleCloseModal();
-                toast.success(mensagem);
-            })
-            .catch((err) => {
-                const message = err.response?.data?.message;
-                if (!message) return toast.error(ERROR_UNKNOWN);
-
-                toast.error(message);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-    };
-
-    return (
-        <>
-            <Button variant="link" className="loginPageForgotPass" onClick={handleShowModal}>
-                Esqueci minha senha
-            </Button>
-
-            <Modal centered show={showModal} onHide={handleCloseModal}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Esqueceu sua senha?</Modal.Title>
-                </Modal.Header>
-
-                <Modal.Body>
-                    <InputGroup>
-                        <InputGroup.Text>
-                            <HiOutlineAtSymbol />
-                        </InputGroup.Text>
-
-                        <FloatingLabel label="Email cadastrado">
-                            <BsTextInput
-                                type="email"
-                                placeholder="Email"
-                                value={email}
-                                onChangeText={setEmail}
-                            />
-                        </FloatingLabel>
-                    </InputGroup>
-                </Modal.Body>
-
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseModal}>
-                        Cancelar
-                    </Button>
-                    <Button
-                        id="modalSubmit"
-                        type="submit"
-                        variant="primary"
-                        onClick={handleForgotPass}
-                    >
-                        <LoadingIcon className={!loading ? "invisible" : ""} />
-                        <span className={loading ? "invisible" : ""}>Receber nova senha</span>
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-        </>
-    );
-}
+import ModalForgotPassword from "../../modal/ModalForgotPassword";
+import ModalRegister from "../../modal/ModalRegister";
 
 function LoginPage() {
     const navigate = useNavigate();
@@ -166,9 +90,13 @@ function LoginPage() {
                     <LoadingIcon className={!loading ? "invisible" : ""} />
                     <span className={loading ? "invisible" : ""}>Entrar</span>
                 </Button>
-
-                <ModalForgotPassword />
             </form>
+
+            <div className="loginPageLinks">
+                <ModalForgotPassword />
+
+                <ModalRegister />
+            </div>
         </div>
     );
 }

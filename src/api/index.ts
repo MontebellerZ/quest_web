@@ -21,6 +21,13 @@ class Api {
         return data.message;
     }
 
+    static async CreateUser(email: string, nickname: string, password: string): Promise<string> {
+        const link = "/user/create";
+        const obj = { email, nickname, password };
+        const data = await axios.post(link, obj).then((res) => res.data);
+        return data.message;
+    }
+
     static async GetAllColors(): Promise<Color[]> {
         const link = "/color/getAll";
         const data: IResDataGetAllColors = await axios.get(link).then((res) => res.data);

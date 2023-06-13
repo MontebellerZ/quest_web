@@ -1,0 +1,23 @@
+.modalRegisterHolder {
+    .modalCenter {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6em;
+    }
+
+    .modalSubmit {
+        font-size: 1em;
+        display: grid;
+        place-items: center;
+
+        > * {
+            opacity: 1;
+            transition: 0.3s;
+            grid-area: 1/1/2/2;
+        }
+
+        .invisible {
+            opacity: 0;
+        }
+    }
+}

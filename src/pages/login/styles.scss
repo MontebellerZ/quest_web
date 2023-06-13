@@ -34,23 +34,18 @@
         }
     }
 
-    .loginPageForgotPass {
+    .loginPageLink {
         align-self: center;
     }
-}
 
-#modalSubmit {
-    font-size: 1em;
-    display: grid;
-    place-items: center;
+    .loginPageLinks {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
 
-    > * {
-        opacity: 1;
-        transition: 0.3s;
-        grid-area: 1/1/2/2;
-    }
-
-    .invisible {
-        opacity: 0;
+        > button {
+            color: $skyBlue;
+        }
     }
 }
